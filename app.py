@@ -7,7 +7,7 @@ st.set_page_config(
 )
 
 st.title("🎓 高校生のためのリアル合格判定AI")
-st.caption("偏差値 × 学年順位から、志望大学への合格可能性をかんたん診断")
+st.caption("偏差値×学年順位から合格可能性を診断するAIツール")
 
 try:
     st.image("image_0.png", width=200)
