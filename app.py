@@ -1,20 +1,34 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="ハチの合格判定AI",
+    page_title="高校生のためのリアル合格判定AI",
     page_icon="🎓",
     layout="centered"
 )
 
-st.title("🎓 ハチの合格判定AI")
+st.title("🎓 高校生のためのリアル合格判定AI")
+st.caption("偏差値 × 学年順位から、志望大学への合格可能性をかんたん診断")
 
 try:
     st.image("image_0.png", width=200)
 except:
     st.write("🐶 ハチ画像が表示できませんでした")
 
-st.write("高校の偏差値・志望大学の偏差値・学年順位から、合格可能性を判定します。")
-st.warning("※これは学習用の簡易シミュレーターです。実際の合否を保証するものではありません。")
+st.info(
+    "高校の偏差値・志望大学の偏差値・学年順位を入力すると、"
+    "A〜D判定と、ハチからの応援コメント、AI風分析を表示します。"
+)
+
+with st.expander("使い方を見る"):
+    st.write("① 高校の偏差値を選びます")
+    st.write("② 志望大学の偏差値を選びます")
+    st.write("③ 学年順位と学年人数を入力します")
+    st.write("④ 「判定する」を押します")
+
+st.warning(
+    "※これは学習用・参考用の簡易シミュレーターです。"
+    "実際の合否を保証するものではありません。"
+)
 
 st.divider()
 
@@ -53,7 +67,8 @@ if st.button("判定する"):
         analysis = "現在の条件では厳しめの判定です。ただし、今後の学習計画や科目対策で改善できる可能性はあります。"
         advice = "まずは志望校との差を確認し、基礎固めから計画的に進めましょう。"
 
-    st.subheader(f"結果：{result}")
+    st.divider()
+    st.subheader(f"診断結果：{result}")
 
     if result == "A判定":
         st.success(hachi_comment)
@@ -64,12 +79,17 @@ if st.button("判定する"):
     else:
         st.error(hachi_comment)
 
-    st.markdown("### AI風分析")
+    st.markdown("### 🔍 AI風分析")
     st.write(analysis)
 
-    st.markdown("### 次にやること")
+    st.markdown("### 📘 次にやること")
     st.write(advice)
 
-    st.divider()
+    st.markdown("### 📊 入力データ")
+    st.write(f"高校偏差値：{school_score}")
+    st.write(f"志望大学偏差値：{target_score}")
     st.write(f"偏差値差：{diff}")
     st.write(f"学年上位：約 {percent:.1f}%")
+
+st.divider()
+st.caption("© Hachi Studio")
