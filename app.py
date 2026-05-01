@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(page_title="合格判定AIシミュレーター", page_icon="🐕")
 
-st.title("🐕 合格判定AIシミュレーター")
+st.title("🐕 合格判定AIシミュレーター!")
 
 try:
     st.image("image_0.png", width=180)
