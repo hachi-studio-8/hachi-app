@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.title("🐶 ハチ式 合格判定AI")
-
+st.image("image_0.png", width=200)
 st.write("偏差値と順位から合格可能性を判定します")
 
 school = st.slider("高校の偏差値", 30, 80, 60)
